@@ -445,7 +445,7 @@
     align-items: center;
     min-width: 943px;
     height: 666px;
-    background: url(../../assets/index-background.png); }
+    background: url(../assets/index-background.png); }
     .overview__wrapper__frame {
       position: absolute;
       display: flex;
