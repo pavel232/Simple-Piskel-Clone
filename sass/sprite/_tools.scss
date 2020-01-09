@@ -1,0 +1,149 @@
+$default-font: roboto;
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 194px;
+    margin: 0 10px 5px 5px;
+}
+
+.animation {
+    position: relative;
+    width: 194px;
+    height: 194px;
+    border: 1px solid black;
+    background-color: white;
+    background-image: url(../assets/background-hatch.svg);
+
+    &:hover {
+        .animation__fullscreen {
+            display: block;
+        }
+    }
+
+    &__canvas {
+        width: 100%;
+        height: 100%;
+        image-rendering: pixelated;
+    }
+
+    &__fullscreen {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 30px;
+        height: 30px;
+        border: none;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.7);
+        background-image: url(../assets/icon-expand.svg);
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 196px;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24), 0px 0px 4px rgba(0, 0, 0, 0.12);
+
+    &__fps {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+        
+        &__text {
+            min-width: 45px;
+            height: 17px;
+            margin-right: 5px;
+            font-family: $default-font;
+        }
+
+        &__scroll {
+            width: 125px;
+        }
+    }
+
+    &__resolution {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 8px 0 8px 0;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            width: 180px;
+            margin-top: 8px;
+            font-family: $default-font;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(0, 0, 0, 0.541327);
+            user-select: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__separator {
+        width: 90%;
+        height: 2px;
+        background-color: rgb(224, 224, 224);
+    }
+
+    &__export {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 8px;
+
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 180px;
+            margin: 8px 0 8px 0;
+        }
+    }
+}
+
+.description {
+    width: 100%;
+    text-align: center;
+    font-family: $default-font;
+    font-size: 13px;
+}
+
+.frames-info {
+    width: 100%;
+    margin-top: 8px;
+    text-align: left;
+    font-family: $default-font;
+    font-size: 14px;
+}
+
+.export-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    &:active {
+        height: 29px;
+        min-width: 61px;
+    }
+}

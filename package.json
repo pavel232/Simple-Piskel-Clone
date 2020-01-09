@@ -1,0 +1,26 @@
+{
+  "name": "css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build": "node-sass sass/main.scss css/style.css -w",
+    "lint": "eslint *.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^7.6.1",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "jest": "^24.9.0"
+  }
+}

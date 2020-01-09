@@ -1,0 +1,210 @@
+$default-font: roboto;
+
+.instruments {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 445px;
+    margin: 5px;
+    z-index: 1;
+}
+
+.instrument-set {
+    display: flex;
+    flex-direction: column;
+    height: 336px;
+    width: 60px;
+    margin: 0 0 10px -5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24), 0px 0px 4px rgba(0, 0, 0, 0.12);
+
+    &__item {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        width: 48px;
+        margin: 8px 6px 8px 6px;
+        background-color: white;
+        opacity: 0.9;
+        border-radius: 4px;
+        user-select: none;
+        overflow: hidden;
+        transition: width 600ms cubic-bezier(0.23, 1, 0.32, 1);
+
+        &:hover {
+            cursor: pointer;
+            width: 167px;
+            transition: width 600ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        &--icon {
+            margin-left: 9px;
+            min-width: 28px;
+            min-height: 28px;
+            width: 28px;
+            height: 28px;
+        }
+
+        &--text {
+            margin-left: 25px;
+            font-family: $default-font;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            white-space: nowrap;
+            color: rgba(0, 0, 0, 0.541327);
+        }
+
+        &__pen-size-current {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 22px;
+            height: 22px;
+            margin-left: 12px;
+            background-color: rgb(170, 170, 170);
+        }
+
+        &__pen-size {
+            display: flex;
+            margin-left: 25px;
+
+            &__element {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 20px;
+                height: 20px;
+                margin: 0 3px 0 3px;
+                background-color: rgb(170, 170, 170);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #00BCD4;
+                }
+            }
+        }
+    }
+}
+
+.colors {
+    display: flex;
+    width: 82px;
+    height: 90px;
+    margin: 10px 0 10px 0;
+
+    &__swap {
+        width: 22px;
+        margin-left: -81px;
+        margin-top: 47px;
+        transform: rotate(90deg);
+        background-image: url(../../assets/icon-frame-swap.svg);
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+
+    &__pri-color {
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        border: none;
+        background-color: grey;
+        z-index: 1;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #00BCD4;
+        }
+    }
+
+    &__sec-color {
+        width: 50px;
+        height: 50px;
+        margin: 30px 0 0 -20px;
+        padding: 0;
+        border: none;
+        background-color: grey;
+        z-index: 0;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #00BCD4;
+        }
+    }
+}
+
+.keyboard-shortcuts {
+
+    &:hover {
+        cursor: pointer;
+
+        .keyboard-shortcuts__list {
+            width: 250px;
+            height: 350px;
+            transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+    }
+
+    &__list {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        left: 10px;
+        bottom: 50px;
+        width: 0;
+        height: 0;
+        border: 2px solid grey;
+        border-radius: 5px;
+        background-color: white;
+        opacity: 0.8;
+        transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+        z-index: 10;
+
+        &__text {
+            margin: 10px;
+            font-family: $default-font;
+            font-size: 20px;
+            white-space: nowrap;
+        }
+    }
+
+    &__button {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        width: 40px;
+        height: 40px;
+        background-size: 100%;
+        background-image: url(../../assets/icon-keyboard-shortcuts.svg);
+    }
+}
+
+.headline {
+    color: blue;
+}
+
+.key {
+    color: red;
+}
+
+.pen-size-1 {
+    width: 6px;
+    height: 6px;
+    background-color: white;
+}
+.pen-size-2 {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+}
+.pen-size-3 {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+}
+.pen-size-4 {
+    width: 18px;
+    height: 18px;
+    background-color: white;
+}

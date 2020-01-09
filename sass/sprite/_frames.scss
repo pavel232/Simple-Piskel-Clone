@@ -1,0 +1,123 @@
+$color-selected: #00BCD4;
+$default-font: roboto;
+
+.frames {
+    min-width: 130px;
+    height: 92.8vh;
+    margin: 10px 5px 5px 5px;
+    overflow-y: scroll;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+
+    &__list {
+        position: relative;
+    }
+}
+
+.frames-element {
+    position: relative;
+    height: 105px;
+    margin-bottom: 5px;
+    border: 4px solid rgb(170, 170, 170);
+    background-image: url(../assets/background-hatch.svg);
+
+    &:hover {
+        .button-move {
+            display: block;
+        }
+        .button-delete {
+            display: block;
+        }
+        .button-duplicate {
+            display: block;
+        }
+    }
+
+    &__button {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        margin: 5px;
+        border: none;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.7);
+        background-size: 90%;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    &__draw {
+        width: 100%;
+        height: 100%;
+        image-rendering: pixelated;
+    }
+}
+
+.add-new {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-top: 10px;
+    border: 4px solid rgb(170, 170, 170);
+
+    &--icon {
+        margin-left: 5px;
+        font-family: $default-font;
+        font-size: 40px;
+    }
+
+    &--text {
+        margin-left: 10px;
+        font-family: $default-font;
+        font-size: 13px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        border-color: $color-selected;
+    }
+}
+
+.button-number {
+    width: 28px;
+    height: 28px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    font-family: $default-font;
+    font-size: 20px;
+}
+.button-move {
+    display: none;
+    bottom: 0;
+    background-image: url(../assets/icon-frame-move.svg);
+    background-size: contain;
+    cursor: move;
+}
+.button-delete {
+    display: none;
+    top: 0;
+    right: 0;
+    background-image: url(../assets/icon-frame-delete.svg);
+    background-size: contain;
+}
+.button-duplicate {
+    display: none;
+    right: 0;
+    bottom: 0;
+    background-image: url(../assets/icon-frame-duplicate.svg);
+    background-size: contain;
+}
+
+.frame-selected {
+    border-color: $color-selected;
+}
+
+.visible {
+    background-color: $color-selected;
+}
+
+.ghost {
+    opacity: 0.3;
+}

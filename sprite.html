@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <title>Simple Piskel Clone | New Sprite</title>
+</head>
+
+<body>
+    
+    <header class="header">
+        <h1>*New Piskel</h1>
+        <div class="login-container">
+            <div id="userPhoto" class="login-container__user-photo hide"></div>
+            <span id="userName" class="login-container__user-name hide"></span>
+            <button id="loginButton" class="button">Sign in</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="instruments">
+            <div class="instrument-set">
+                <div id="pencil" class="instrument-set__item selected">
+                    <img class="instrument-set__item--icon" src="./assets/icon-pencil.svg" alt="Pencil"></img>
+                    <span class="instrument-set__item--text">Pencil</span>
+                </div>
+                <div id="line" class="instrument-set__item" disabled>
+                    <img class="instrument-set__item--icon" src="./assets/icon-line.svg" alt="Line"></img>
+                    <span class="instrument-set__item--text">Line</span>
+                </div>
+                <div id="bucket" class="instrument-set__item">
+                    <img class="instrument-set__item--icon" src="./assets/icon-bucket.svg" alt="Paint bucket"></img>
+                    <span class="instrument-set__item--text">Paint bucket</span>
+                </div>
+                <div id="chooseColor" class="instrument-set__item">
+                    <img class="instrument-set__item--icon" src="./assets/icon-color.svg" alt="Choose color"></img>
+                    <span class="instrument-set__item--text">Choose color</span>
+                </div>
+                <div id="erase" class="instrument-set__item">
+                    <img class="instrument-set__item--icon" src="./assets/icon-erase.svg" alt="Erase"></img>
+                    <span class="instrument-set__item--text">Erase</span>
+                </div>
+                <div class="instrument-set__item">
+                    <div class="instrument-set__item__pen-size-current">
+                        <div id="penSizeCurrent" class="pen-size-1"></div>
+                    </div>
+                    <div class="instrument-set__item__pen-size">
+                        <div id="penSize1" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-1"></div>
+                        </div>
+                        <div id="penSize2" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-2"></div>
+                        </div>
+                        <div id="penSize3" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-3"></div>
+                        </div>
+                        <div id="penSize4" class="instrument-set__item__pen-size__element">
+                            <div class="pen-size-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="colors">
+                <input id="primaryColorButton" class="colors__pri-color" value="#000000" type="color"></input>
+                <input id="secondaryColorButton" class="colors__sec-color" value="#808080" type="color"></input>
+                <div id="swapColors" class="colors__swap"></div>
+            </div>
+            <div class="keyboard-shortcuts">
+                <div class="keyboard-shortcuts__list">
+                    <div>
+                        <p class="keyboard-shortcuts__list__text headline">Instrument</p>
+                        <p class="keyboard-shortcuts__list__text">Pencil</p>
+                        <p class="keyboard-shortcuts__list__text">Line</p>
+                        <p class="keyboard-shortcuts__list__text">Paint Bucket</p>
+                        <p class="keyboard-shortcuts__list__text">Choose Color</p>
+                        <p class="keyboard-shortcuts__list__text">Erase</p>
+                        <p class="keyboard-shortcuts__list__text">Pen Size 1</p>
+                        <p class="keyboard-shortcuts__list__text">Pen Size 2</p>
+                        <p class="keyboard-shortcuts__list__text">Pen Size 3</p>
+                        <p class="keyboard-shortcuts__list__text">Pen Size 4</p>
+                    </div>
+                    <div>
+                        <p class="keyboard-shortcuts__list__text headline">Key</p>
+                        <p class="keyboard-shortcuts__list__text key">P</p>
+                        <p class="keyboard-shortcuts__list__text key">L</p>
+                        <p class="keyboard-shortcuts__list__text key">B</p>
+                        <p class="keyboard-shortcuts__list__text key">C</p>
+                        <p class="keyboard-shortcuts__list__text key">E</p>
+                        <p class="keyboard-shortcuts__list__text key">1</p>
+                        <p class="keyboard-shortcuts__list__text key">2</p>
+                        <p class="keyboard-shortcuts__list__text key">3</p>
+                        <p class="keyboard-shortcuts__list__text key">4</p>
+                    </div>
+                </div>
+                <div class="keyboard-shortcuts__button" title="Keyboard shortcuts"></div>
+            </div>
+        </div>
+
+        <div class="frames">
+            <ul id="framesList" class="frames__list">
+                <li id="frame-0" class="frames-element frame-selected">
+                    <canvas id="drawFrame-0" class="frames-element__draw" width="128" height="128"></canvas>
+                    <button id="buttonNumber-0" class="frames-element__button button-number visible">1</button>
+                    <button id="buttonDelete-0" class="frames-element__button button-delete" title="Delete frame"></button>
+                    <button id="buttonMove-0" class="frames-element__button button-move" title="Move frame"></button>
+                    <button id="buttonDuplicate-0" class="frames-element__button button-duplicate" title="Duplicate this frame"></button>
+                </li>
+                <div id="addNewFrame" class="add-new">
+                    <div id="addNewFrame-+" class="add-new--icon">+</div>
+                    <div id="addNewFrame-a" class="add-new--text">Add new frame</div>
+                </div>
+            </ul>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="canvas" class="canvas" width="128" height="128"></canvas>
+        </div>
+        
+        <div class="tools">
+            <div id="animationCanvasWrapper" class="animation">
+                <canvas id="animationCanvas" class="animation__canvas" width="128" height="128"></canvas>
+                <button id="fullScreenButton" class="animation__fullscreen"></button>
+            </div>
+            <div class="settings">
+                <div class="settings__fps">
+                    <span id="fpsText" class="settings__fps__text">12 fps</span>
+                    <input id="slider" type="range" min="0" max="24" value="12" class="settings__fps__scroll">
+                </div>
+                <div class="settings__separator"></div>
+                <div class="settings__resolution">
+                    <span class="description">set resolution</span>
+                    <div id="res32" class="settings__resolution__item selected">32x32</div>
+                    <div id="res64" class="settings__resolution__item">64x64</div>
+                    <div id="res128" class="settings__resolution__item">128x128</div>
+                </div>
+                <div class="settings__separator"></div>
+                <div class="settings__export">
+                    <span class="description">export</span>
+                    <div class="settings__export__buttons">
+                        <a href="" id="apngButton" class="button export-button">APNG</a>
+                        <a href="" id="gifButton" class="button export-button">GIF</a>
+                    </div>
+                </div>
+            </div>
+            <div id="framesInfo" class="frames-info">temp</div>
+        </div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="./script/frames/frames.js"></script>
+    <script type="module" src="./script/animations/animation.js"></script>
+    <script type="text/javascript" src="./script/canvas2apng/canvas2apng.js"> </script>
+    <script type="module" src="./script/animations/export-animation.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="./script/login.js"></script>
+</body>
+</html>

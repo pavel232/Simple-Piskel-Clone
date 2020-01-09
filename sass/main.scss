@@ -1,0 +1,37 @@
+@import "fonts/_fonts";
+@import "./sprite/sprite";
+@import "./index/index";
+@import "./_header";
+@import "./_footer";
+
+$default-font: roboto;
+
+.button {
+    height: 33px;
+    min-width: 65px;
+    margin: 0 5px 0 5px;
+    font-family: $default-font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 24px;
+    background-color: #00BCD4;
+    border-radius: 2px;
+    border: none;
+    user-select: none;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+        cursor: pointer;
+        background-color: #00cee9;
+    }
+    &:active {
+        background-color: #0099ad;
+        border: 2px solid #007b8b;
+    }
+}
+
+.hide {
+    display: none;
+}

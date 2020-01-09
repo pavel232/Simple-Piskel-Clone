@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <title>Simple Piskel Clone | Pavel Haidukevich</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Simple Piskel Clone</h1>
+        <div class="login-container">
+            <div id="userPhoto" class="login-container__user-photo hide"></div>
+            <span id="userName" class="login-container__user-name hide">Павел Гайдукевич</span>
+            <button id="loginButton" class="button">Sign in</button>
+        </div>
+    </header>
+
+    <main class="main-index">
+        <div class="overview">
+            <div class="overview__wrapper">
+                <h2 class="overview__wrapper__headline">Piskel is a free online editor for animated sprites & pixel art</h2>
+                <h3 class="overview__wrapper__h3">Don't know where to start? Read about the features of the application by hovering over the yellow squares.</h3>
+                <div class="overview__wrapper__frame overview-instruments">
+                    <ul class="overview-instruments__list overview-list">
+                        Use instruments:
+                        <li>Pencil</li>
+                        <li>Line</li>
+                        <li>Flood fill</li>
+                        <li>Dropper</li>
+                        <li>Eraser</li>
+                    </ul>
+                    <p class="overview-instruments__description">...and 4 pen sizes</p>
+                </div>
+                <div class="overview__wrapper__frame overview-colors">
+                    <ul class="overview-colors__list overview-list">
+                        Change and paint in two colors:
+                        <li>Left mouse button - Primary color</li>
+                        <li>Right mouse button - Secondary color</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-frames">
+                    <ul class="overview-frames__list overview-list">
+                        Frames capability:
+                        <li>Create unlimited quantity</li>
+                        <li>Visible ON/OFF</li>
+                        <li>Drag'n'Drop</li>
+                        <li>Delete</li>
+                        <li>Duplicate</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-fps">
+                    <ul class="overview-fps__list overview-list">
+                        Preview capability:
+                        <li>Preview your animation</li>
+                        <li>From 0 frames</li>
+                        <li>To 24 per second</li>
+                        <li>Fullscreen</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-resolution">
+                    <ul class="overview-resolution__list overview-list">
+                        Support resolutions:
+                        <li>32x32 px</li>
+                        <li>64x64 px</li>
+                        <li>128x128 px</li>
+                    </ul>
+                </div>
+                <div class="overview__wrapper__frame overview-export">
+                    <ul class="overview-export__list overview-list">
+                        Ability to export animations to:
+                        <li>Png</li>
+                        <li>Gif</li>
+                    </ul>
+                </div>
+                <img src="./assets/test-animation.png" class="overview-animation">
+            </div>
+        </div>
+        <div class="get-started">
+            <p class="get-started__text">Now click on the button to create your own animation!</p>
+            <a class="button new-frame-button" href="./sprite.html">Create new sprite</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a class="github" href="https://github.com/pavel232" target="_blank">
+            <div class="github__icon"></div>
+            <span class="github__info">My GitHub Account</span>
+        </a>
+        <span class="footer__description">Pavel Haidukevich | The Rolling Scopes School 2019Q3</span>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script src="./script/login.js"></script>
+</body>
