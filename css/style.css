@@ -434,7 +434,7 @@
 .overview {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   min-width: 943px;
   height: 666px;
   background-color: rgba(0, 0, 0, 0.5); }
