@@ -2,7 +2,11 @@
 Preview project
 https://pavel232.github.io/Simple-Piskel-Clone/
 
-# Piskel-clone
+How to use:
+1. Clone or download this project
+2. Go to simple-piskel-clone folder
+3. Open index.html file
+
 
 ## Functional requirements
 You need to create a simplified clone of the https://www.piskelapp.com/, a web-based tool for Spriting and Pixel art.
