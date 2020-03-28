@@ -428,7 +428,8 @@
   display: flex; }
 
 .main-index {
-  height: 89vh; }
+  height: 89vh;
+  min-height: 800px; }
 
 .overview {
   display: flex;
@@ -594,6 +595,7 @@
   justify-content: space-between;
   align-items: center;
   height: 5.5vh;
+  min-height: 49px;
   padding: 0 15px 0 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24), 0px 0px 4px rgba(0, 0, 0, 0.12);
   user-select: none; }
@@ -626,6 +628,7 @@
   justify-content: space-between;
   align-items: center;
   height: 5.5vh;
+  min-height: 49px;
   box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.24);
   user-select: none; }
   .footer__description {
