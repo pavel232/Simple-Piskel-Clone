@@ -2,7 +2,7 @@ const loginButton = document.getElementById('loginButton');
 const userNameElement = document.getElementById('userName');
 const userPhotoElement = document.getElementById('userPhoto');
 
-let isLogin = 0;
+let isLogin = false;
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFmqrZ6P3XN9ZEKiymDZRmDyDhhLcg3es",
@@ -21,7 +21,7 @@ firebase.initializeApp(firebaseConfig);
 function loginSuccess(result) {
   const userName = result.user.displayName;
   const userPhoto = result.user.photoURL;
-  isLogin = 1;
+  isLogin = true;
 
   userPhotoElement.className = 'login-container__user-photo';
   userNameElement.className = 'login-container__user-name';
@@ -40,7 +40,7 @@ function loginError(error) {
 
 function logOut() {
   firebase.auth().signOut();
-  isLogin = 0;
+  isLogin = false;
   loginButton.innerHTML = 'Sign in';
 
   userPhotoElement.className = 'login-container__user-photo hide';
@@ -49,7 +49,7 @@ function logOut() {
 
 
 loginButton.addEventListener('click', () => {
-  if (isLogin === 0) {
+  if (!isLogin) {
     let provider = new firebase.auth.GoogleAuthProvider()
     firebase.auth().signInWithPopup(provider).then(function(result) {
       loginSuccess(result);

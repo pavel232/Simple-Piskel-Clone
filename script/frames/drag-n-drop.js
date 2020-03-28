@@ -30,7 +30,7 @@ export function sortable(rootEl, framesList, refreshFunction){
 
     refreshFunction();
   }
-  
+
   rootEl.addEventListener('dragstart', function (evt){
     dragEl = evt.target;
     nextEl = dragEl.nextSibling;
@@ -41,8 +41,6 @@ export function sortable(rootEl, framesList, refreshFunction){
     rootEl.addEventListener('dragover', _onDragOver, false);
     rootEl.addEventListener('dragend', _onDragEnd, false);
 
-    setTimeout(function (){
-      dragEl.classList.add('ghost');
-    }, 0)
+    dragEl.classList.add('ghost');
   }, false);
 }

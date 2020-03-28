@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 const framesInfo = document.getElementById('framesInfo');
 
 export function setFrameInfo(width, x, y) {

@@ -1,12 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-bitwise */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
-
 import { drawFrame, setFrameSize } from './script/frames/frames.js';
 import { setAnimationSize, loadAnimationBuffer } from './script/animations/animation.js';
 import { setFrameInfo } from './script/frame-info.js';
@@ -14,7 +5,7 @@ import { setFrameInfo } from './script/frame-info.js';
 // initialize variables
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-let canvasBuffer = [];
+let canvasBuffer;
 canvas.oncontextmenu = () => false;
 
 const bucket = document.getElementById('bucket');
@@ -27,14 +18,14 @@ const penSize2 = document.getElementById('penSize2');
 const penSize3 = document.getElementById('penSize3');
 const penSize4 = document.getElementById('penSize4');
 const penSizeCurrent = document.getElementById('penSizeCurrent');
-const secondaryColorButton = document.getElementById('secondaryColorButton');
 const primaryColorButton = document.getElementById('primaryColorButton');
+const secondaryColorButton = document.getElementById('secondaryColorButton');
 const swapColors = document.getElementById('swapColors');
 const res32 = document.getElementById('res32');
 const res64 = document.getElementById('res64');
 const res128 = document.getElementById('res128');
 
-let primaryColor = primaryColorButton.value;
+let primaryColor =  primaryColorButton.value;
 let secondaryColor = secondaryColorButton.value;
 let currentInstrument = 'pencil';
 
@@ -126,14 +117,6 @@ function setCurrentColor(mouseButton, color) {
   }
 }
 
-function rgbToHex(colorRgb) {
-  const arrayRgb = colorRgb.slice(4, colorRgb.length - 1).split(',');
-  const r = arrayRgb[0];
-  const g = arrayRgb[1];
-  const b = arrayRgb[2];
-  return `#${((1 << 24) + ((+r) << 16) + ((+g) << 8) + (+b)).toString(16).slice(1)}`;
-}
-
 
 // instrument bucket
 function bucketCanvas(mouseButton) {
@@ -167,14 +150,25 @@ function lineInstrument() {
 
 
 // instrument choose color
-function colorCanvas(x, y) {
+function colorDropper(x, y) {
+  let rgb;
   const colorArray = ctx.getImageData(x, y, 1, 1).data;
-  if (colorArray.toString() === '0,0,0,255') {
-    return '#000000';
-  } if (colorArray.toString() === '0,0,0,0') {
-    return '#ffffff';
+
+  switch(colorArray.toString()) {
+    case '0,0,0,255':
+      rgb = '#000000';
+      break;
+    case '0,0,0,0':
+      rgb = '#ffffff';
+      break;
+    default:
+      const r = colorArray[0];
+      const g = colorArray[1];
+      const b = colorArray[2];
+      rgb = `#${((1 << 24) + ((+r) << 16) + ((+g) << 8) + (+b)).toString(16).slice(1)}`;
   }
-  return rgbToHex(`rgb(${colorArray[0]}, ${colorArray[1]}, ${colorArray[2]})`);
+
+  return rgb;
 }
 
 
@@ -214,7 +208,7 @@ canvas.addEventListener('mousedown', (event) => {
     bucketCanvas(event.button);
   }
   if (currentInstrument === 'chooseColor') {
-    setCurrentColor(event.button, colorCanvas(x1, y1));
+    setCurrentColor(event.button, colorDropper(x1, y1));
   }
   if (currentInstrument === 'pencil') {
     pencilInstrument(event.button);
@@ -252,40 +246,41 @@ canvas.addEventListener('mousemove', () => {
 
 
 // change instruments using buttons
-window.addEventListener('keyup', (event) => {
-  if (event.code === 'KeyC') {
-    selectItem('instrument-set', chooseColor);
-  }
-  if (event.code === 'KeyP') {
-    selectItem('instrument-set', pencil);
-  }
-  if (event.code === 'KeyB') {
-    selectItem('instrument-set', bucket);
-  }
-  if (event.code === 'KeyE') {
-    selectItem('instrument-set', erase);
-  }
-  if (event.code === 'KeyL') {
-    selectItem('instrument-set', line);
-  }
-  if (event.code === 'Digit1') {
-    setPenSize(1);
-  }
-  if (event.code === 'Digit2') {
-    setPenSize(2);
-  }
-  if (event.code === 'Digit3') {
-    setPenSize(3);
-  }
-  if (event.code === 'Digit4') {
-    setPenSize(4);
+window.addEventListener('keydown', (event) => {
+  switch(event.code) {
+    case 'KeyC':
+      selectItem('instrument-set', chooseColor);
+      break;
+    case 'KeyP':
+      selectItem('instrument-set', pencil);
+      break;
+    case 'KeyB':
+      selectItem('instrument-set', bucket);
+      break;
+    case 'KeyE':
+      selectItem('instrument-set', erase);
+      break;
+    case 'KeyL':
+      selectItem('instrument-set', line);
+      break;
+    case 'Digit1':
+      setPenSize(1);
+      break;
+    case 'Digit2':
+      setPenSize(2);
+      break;
+    case 'Digit3':
+      setPenSize(3);
+      break;
+    case 'Digit4':
+      setPenSize(4);
+      break;
   }
 });
 
 
 // load & save canvas data to buffer
 function saveToCanvasBuffer() {
-  canvasBuffer.length = 0;
   canvasBuffer = ctx.getImageData(0, 0, width, height);
 }
 
@@ -296,7 +291,6 @@ export function loadFromCanvasBuffer(data) {
 
 // Local storage save & load
 function localStorageSave() {
-  // localStorage.setItem('canvas', canvas.toDataURL());
   localStorage.setItem('instrument', currentInstrument);
   localStorage.setItem('resolution', `${width}, ${height}`);
   localStorage.setItem('primaryColor', primaryColor);
@@ -314,37 +308,37 @@ function localStorageLoad() {
   if (localStorage.getItem('penSize')) {
     setPenSize(localStorage.getItem('penSize'));
   }
-  if (localStorage.getItem('instrument')) {
-    if (localStorage.getItem('instrument') === 'bucket') {
+
+  switch(localStorage.getItem('instrument')) {
+    case 'bucket':
       selectItem('instrument-set', bucket);
-    } else if (localStorage.getItem('instrument') === 'chooseColor') {
+      break;
+    case 'chooseColor':
       selectItem('instrument-set', chooseColor);
-    } else if (localStorage.getItem('instrument') === 'pencil') {
-      selectItem('instrument-set', pencil);
-    } else if (localStorage.getItem('instrument') === 'line') {
+      break;
+    case 'line':
       selectItem('instrument-set', line);
-    } else if (localStorage.getItem('instrument') === 'erase') {
+      break;
+    case 'erase':
       selectItem('instrument-set', erase);
-    }
+      break;
+    default:
+      selectItem('instrument-set', pencil);
   }
-  if (localStorage.getItem('resolution')) {
-    if (localStorage.getItem('resolution') === '32, 32') {
+
+  switch(localStorage.getItem('resolution')) {
+    case '32, 32':
       selectItem('settings__resolution', res32);
       setCanvasResolution(32);
-    } else if (localStorage.getItem('resolution') === '64, 64') {
-      selectItem('settings__resolution', res64);
+      break;
+    case '64, 64':
+      selectItem('settings__resolution', res64);;
       setCanvasResolution(64);
-    } else if (localStorage.getItem('resolution') === '128, 128') {
+      break;
+    default:
       selectItem('settings__resolution', res128);
       setCanvasResolution(128);
-    }
   }
-  // if (localStorage.getItem('canvas')) {
-  //   const dataURL = localStorage.getItem('canvas');
-  //   const img = new Image();
-  //   img.src = dataURL;
-  //   img.onload = () => ctx.drawImage(img, 0, 0);
-  // }
 }
 
 window.addEventListener('beforeunload', () => {

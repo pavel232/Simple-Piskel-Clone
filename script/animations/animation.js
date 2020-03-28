@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
-
 import { getFramesDataArray } from '../frames/frames.js';
 import { fullScreen } from './fullscreen.js';
 

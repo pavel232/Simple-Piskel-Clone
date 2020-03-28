@@ -1,8 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-param-reassign */
-
 import { loadFromCanvasBuffer } from '../../script.js';
 import { loadAnimationBuffer } from '../animations/animation.js';
 import { sortable } from './drag-n-drop.js';

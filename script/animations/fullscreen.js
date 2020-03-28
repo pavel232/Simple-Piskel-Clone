@@ -1,6 +1,5 @@
-/* eslint-disable import/prefer-default-export */
-
 // fullscreen api from http://qnimate.com/full-screen-api-tutorial-with-demo/
+
 const animationCanvasWrapper = document.getElementById('animationCanvasWrapper');
 
 export function fullScreen() {
